@@ -2,6 +2,8 @@
 
 ### 1.数的划分(P1025)
 
+<img src="C:\Users\20421\Desktop\LEARN\算法题型小记录.assets\image-20251106164927589.png" alt="image-20251106164927589" style="zoom:67%;" />
+
 **动态规划方程:**
 
 f\[i][x]=f\[i-1][x-1]+f\[i-x][x]
@@ -163,6 +165,32 @@ for(int i=0;i<n;i++)
 当然这种 $O(n^2)$ 的做法很容易超时, 
 
 优化的方法就是使用 **贪心+二分查找** 可以优化时间复杂度到$O(n \log n)$
+
+
+
+#### 2.Kadane
+
+Kadane算法用来求最大子序列和
+
+```c++
+int main()
+{
+    cin>>n;
+    int now=0,ans=INT_MIN;
+    //标准Kadane算法求最大字段和
+    for(int i=1;i<=n;i++)
+    {
+        int a;cin>>a;
+        now+=a;
+        if(now>ans)
+        ans=now;
+        //如果now小于0,它对后面的序列就没有任何增益效果了,所以清零
+        if(now<0)
+        now=0;
+    }
+    cout<<ans;
+}
+```
 
 
 
